@@ -8,7 +8,7 @@ What does the following code return?
 
 new Set([1,1,2,2,3,4])
 */
-let answer1 = [1,2,3,4];
+// let answer1 = [1,2,3,4];
 
 /*
 Quick Question #2
@@ -16,7 +16,7 @@ What does the following code return?
 
 [...new Set("referee")].join("")
 */
-let answer2 = "refr";
+// let answer2 = "ref";
 
 
 /*
@@ -27,6 +27,7 @@ let m = new Map();
 m.set([1,2,3], true);
 m.set([1,2,3], false);
 */
+// answer3 = [[1,2,3]=true,[1,2,3]=false]
 
 
 /*
@@ -36,7 +37,14 @@ Write a function called hasDuplicate which accepts an array and returns true or 
 hasDuplicate([1,3,2,1]) // true
 hasDuplicate([1,5,-1,4]) // false
 */
+const hasDuplicate = (arr) => {
+    const newArr = new Set(arr);
+      if (arr.length !== (newArr.size)){
+        return true
+    } return false
+}
 
+// ANSWER: const hasDuplicate = arr => new Set(arr).size !== arr.length
 
 /*
 vowelCount
@@ -45,3 +53,23 @@ Write a function called vowelCount which accepts a string and returns a map wher
 vowelCount('awesome') // Map { 'a' => 1, 'e' => 2, 'o' => 1 }
 vowelCount('Colt') // Map { 'o' => 1 }
 */
+
+function isVowel(char){
+  return 'aeiou'.includes(char);
+}
+
+ function vowelCount(string) {
+
+    const vowelArr = new Map();
+
+    for (let char of string) {
+      let lowerCase = char.toLowerCase();
+      if (isVowel(lowerCase)) {
+        if (vowelArr.has(lowerCase)){
+          vowelArr.set(lowerCase,vowelArr.get(lowerCase) + 1);
+        } else {
+          vowelArr.set(lowerCase,1)
+        }
+      }
+    } return vowelArr;
+ };
